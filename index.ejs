@@ -1,0 +1,21 @@
+<h1>Blog Feed</h1>
+<% if (user) { %>
+  <a href="/new">Create Post</a> | <a href="/logout">Logout</a>
+<% } else { %>
+  <a href="/signin">Login</a> | <a href="/signup">Signup</a>
+<% } %>
+<ul>
+<% blogs.forEach(blog => { %>
+  <li>
+    <h3><%= blog.title %></h3>
+    <p><%= blog.body %></p>
+    <p>By <%= blog.creator_name %> at <%= blog.date_created.toLocaleString() %></p>
+    <% if (user === blog.creator_user_id) { %>
+      <a href="/edit/<%= blog.blog_id %>">Edit</a>
+      <form method="POST" action="/delete/<%= blog.blog_id %>" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    <% } %>
+  </li>
+<% }) %>
+</ul>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Post</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <h1>Edit Blog Post</h1>
+
+  <form action="/edit/<%= post.blog_id %>" method="POST">
+    <label for="title">Title:</label><br>
+    <input type="text" id="title" name="title" value="<%= post.title %>" required><br><br>
+
+    <label for="body">Content:</label><br>
+    <textarea id="body" name="body" row="10" cols="50" required><%= post.body %></textarea><br><br>
+
+    <button type="submit">Update Post</button>
+  </form>
+
+  <p><a href="/">Back to Blog Feed</a></p>
+</body>
+</html>
